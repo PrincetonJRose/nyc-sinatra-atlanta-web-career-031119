@@ -1,20 +1,20 @@
 class LandmarksController < ApplicationController
   # add controller methods
-  # set :views, ‘./app/views/landmarks’
+  set :views, 'app/views/landmarks'
 
   get '/landmarks' do
     @landmarks = Landmark.all
-    erb :'/landmarks/index'
+    erb :index
   end
 
   get '/landmarks/:id' do
     @landmark = Landmark.find(params[:id])
-    erb :'landmarks/show'
+    erb :show
   end
 
   get '/landmarks/:id/edit' do
     @landmark = Landmark.find(params[:id])
-    erb :"landmarks/edit"
+    erb :edit
   end
 
   patch '/landmarks/:id' do
