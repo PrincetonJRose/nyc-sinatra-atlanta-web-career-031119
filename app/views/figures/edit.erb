@@ -1,0 +1,24 @@
+<form action="/figures/<%= @figure.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <h1>Enter new name: <input id="figure_name" type="text" placeholder="Name goes here..."></h1>
+<% figure_titles = @figure.titles.pluck(:name) %>
+<% @titles.each do |title| %>
+    <input type="checkbox" name="title_ids[]" id="<%=title.id%>" value="<%=title.id%>" <%='checked' if figure_titles.include?(title.name)  %>><%=title.name%></input><br>
+<%end%>
+
+<h1>Enter New Title: </h1>
+
+<input type="text" id="title_name" name="new_title">
+
+<br>
+
+<h1>Change Landmark Association</h1>
+<% figure_landmarks = @figure.landmarks.pluck(:id) %>
+<% @landmarks.each do |landmark| %>
+    <input type="checkbox" name="landmark_ids[]" id="<%=landmark.id%>" value="<%=landmark.id%>" <%='checked' if figure_landmarks.include?(landmark.id)  %>><%=landmark.name%></input><br>
+<% end %>
+<br>
+<br>
+<input type="submit" id="submit" value="Submit changes!">
+</form>
+  

@@ -1,4 +1,4 @@
-class LandmarksController < ApplicationController
+class LandmarksController < Sinatra::Base
   # add controller methods
   set :views, 'app/views/landmarks'
 

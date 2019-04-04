@@ -1,4 +1,4 @@
-class FiguresController < ApplicationController
+class FiguresController < Sinatra::Base
   # add controller methods
   set :views, 'app/views/figures'
 
@@ -11,6 +11,13 @@ class FiguresController < ApplicationController
     @titles = Title.all
     @landmarks = Landmark.all
     erb :new
+  end
+
+  get "/figures/:id/edit" do
+    @figure = Figure.find(params[:id])
+    @titles = Title.all
+    @landmarks = Landmark.all
+    erb :edit
   end
 
   get '/figures/:id' do
@@ -39,4 +46,11 @@ class FiguresController < ApplicationController
 
     redirect "/figures/#{@figure.id}"
     end
+
+    patch '/figures/:id' do
+      binding.pry
+      @figure = Figure.find(params[:id])
+
+    end
+
 end

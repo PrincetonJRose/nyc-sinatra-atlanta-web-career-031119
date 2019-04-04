@@ -1,14 +1,19 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Title</th>
-  </tr>
-  <tr>
-    <td><%= @figure.name %></td>
-    <td><%=  %></td>
-  </tr>
-<table>
 <br>
+<h1><b><u> Name: <%= @figure.name %> </h1></b></u>
+<br>
+<h2><u> Titles this figure has: </h2></u>
+  <p><ul>
+    <% FigureTitle.all.each do |id| %>
+      <% if id.figure_id == @figure.id %>
+        <% title = Title.find(id.title_id) %>
+        <li><%= title.name %><br></li>
+      <% end %>
+    <% end %>
+    </p></ul>
+
+
+
+
 <a class="button" href="/figures/<%= @figure.id %>/edit">Edit Figure</a>
 <br>
 <a class="button" href="/figures">Figures</a>
