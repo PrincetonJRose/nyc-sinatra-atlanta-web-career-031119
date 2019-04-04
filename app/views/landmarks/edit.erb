@@ -1,6 +1,24 @@
 <h2>Edit Historical Landmark</h2>
 
 <!-- add content here -->
-
-<a class="button" href="/figures">Landmarks</a>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Year Completed</th>
+  </tr>
+  <tr>
+    <td><%= @landmark.name %></td>
+    <td><%= @landmark.year_completed %></td>
+  </tr>
+<table>
+<br>
+<form action="/landmarks/<%= @landmark.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <p> Enter the new name: <input type="text" name="name"> </p>
+    <p> Enter the new year it was completed: <input type="text" name="year_completed"> </p>
+    <input id="submit" type="submit" value="Commit Changes!">
+</form>
+<br>
+<a class="button" href="/landmarks">Landmarks</a>
+<br>
 <a class="button" href="/">Home</a>
